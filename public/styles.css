@@ -18,11 +18,9 @@ body {
 }
 
 .snake {
-    background-color: rgb(145, 204, 131);
     border: 0.25vmin solid whitesmoke;
 }
 
 .food {
-    background-color: rgb(156, 55, 55);
     border: 0.25vmin solid whitesmoke;
 }

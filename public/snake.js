@@ -1,7 +1,7 @@
 import { getInputDirection } from './input.js'
 const GRID_SIZE = 21
 
-export const SNAKE_SPEED = 1
+export const SNAKE_SPEED = 4
 const snakeBody = [{ x: 11, y: 11 }]
 let newSegments = 0
 
@@ -20,8 +20,12 @@ export function updateSnake() {
 }
 
 export function renderSnake(gameBoard) {
-    snakeBody.forEach(segment => {
-        const snakePiece = document.createElement('div')
+    snakeBody.forEach((segment, index) => {
+        const snakePiece = document.createElement('IMG')
+        const image = getCorrectImage(index)
+
+        snakePiece.setAttribute("src", image)
+        snakePiece.setAttribute("width", "38.36")
 
         snakePiece.style.gridRowStart = segment.y
         snakePiece.style.gridColumnStart = segment.x
@@ -31,6 +35,43 @@ export function renderSnake(gameBoard) {
     })
 }
 
+function getCorrectImage(index){
+    const inputDirection = getInputDirection()
+    let imgUrl = "./assets/"
+
+    if(index === 0) {
+        switch(inputDirection.d){
+            case 'N':
+            case 'U':
+                imgUrl += "head_up.png"
+                break
+            case 'D':
+                imgUrl += "head_down.png"
+                break
+            case 'L':
+                imgUrl += "head_left.png"
+                break
+            case 'R':
+                imgUrl += "head_right.png"
+                break
+        }
+
+        return imgUrl
+    } else if(index === snakeBody.length - 1){
+        if(snakeBody[index - 1].x > snakeBody[index].x) {
+            imgUrl += "raba_left.png"
+        } else if(snakeBody[index - 1].x < snakeBody[index].x) {
+            imgUrl += "raba_right.png"
+        } else if(snakeBody[index - 1].y > snakeBody[index].y) {
+            imgUrl += "raba_up.png"
+        } else {
+            imgUrl += "raba_down.png"
+        }
+        return imgUrl
+    } else {
+        return imgUrl += "body.png"
+    }
+}
 
 export function foodAte(position) {
     return snakeBody[0].x === position.x && snakeBody[0].y === position.y
