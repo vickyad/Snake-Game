@@ -7,10 +7,8 @@ let newSegments = 0
 
 export function updateSnake() {
     addSegments()
-
     const inputDirection = getInputDirection()
 
-    /* Acho que tem um jeito melhor de fazer isso */
     for (let i = snakeBody.length - 2; i >= 0; i--) {
         snakeBody[i + 1] = { ...snakeBody[i] }
     }
@@ -55,8 +53,6 @@ function getCorrectImage(index){
                 imgUrl += "head_right.png"
                 break
         }
-
-        return imgUrl
     } else if(index === snakeBody.length - 1){
         if(snakeBody[index - 1].x > snakeBody[index].x) {
             imgUrl += "raba_left.png"
@@ -67,7 +63,6 @@ function getCorrectImage(index){
         } else {
             imgUrl += "raba_down.png"
         }
-        return imgUrl
     } else {
         if(snakeBody[index - 1].x === snakeBody[index].x && snakeBody[index].x === snakeBody[index + 1].x) {
             imgUrl += "body_v.png"
@@ -80,17 +75,15 @@ function getCorrectImage(index){
             } else if((snakeBody[index - 1].x === snakeBody[index].x && snakeBody[index - 1].y === (snakeBody[index].y + 1) && snakeBody[index].y === snakeBody[index + 1].y && snakeBody[index].x === (snakeBody[index + 1].x - 1)) ||
                 (snakeBody[index - 1].y === snakeBody[index].y && snakeBody[index].x === (snakeBody[index - 1].x - 1) && snakeBody[index].x === snakeBody[index + 1].x && snakeBody[index + 1].y === (snakeBody[index].y + 1))) {
                 imgUrl += "curve_dr.png"
-            } else if((snakeBody[index - 1].y === snakeBody[index].y && snakeBody[index - 1].x === (snakeBody[index].x - 1) && snakeBody[index].x === snakeBody[index + 1].x) || 
-                (snakeBody[index - 1].x === snakeBody[index].x && snakeBody[index].y === snakeBody[index + 1].y && snakeBody[index + 1].x === (snakeBody[index].x - 1))) {
+            } else if(snakeBody[index - 1].x === (snakeBody[index].x - 1) || snakeBody[index + 1].x === (snakeBody[index].x - 1)) {
                 imgUrl += "curve_ul.png"
             }else {
                 imgUrl += "curve_ur.png"
             }
-
         }
-        
-        return imgUrl
     }
+
+    return imgUrl
 }
 
 export function foodAte(position) {
