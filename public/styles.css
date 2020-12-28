@@ -5,11 +5,11 @@ body {
     justify-content: center;
     align-items: center;
     margin: 0;
-    background-color: #a0a0f7;
+    background-image: url(./assets/grass_background.jpg);
 }
 
 #game-board {
-    background-color: whitesmoke;
+    background-image: url(./assets/dirt_background.png);
     height: 90vmin;
     width: 90vmin;
     display: grid;
