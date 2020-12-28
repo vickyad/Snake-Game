@@ -16,11 +16,3 @@ body {
     grid-template-rows: repeat(21, 1fr);
     grid-template-columns: repeat(21, 1fr);
 }
-
-.snake {
-    border: 0.25vmin solid whitesmoke;
-}
-
-.food {
-    border: 0.25vmin solid whitesmoke;
-}

@@ -69,7 +69,27 @@ function getCorrectImage(index){
         }
         return imgUrl
     } else {
-        return imgUrl += "body.png"
+        if(snakeBody[index - 1].x === snakeBody[index].x && snakeBody[index].x === snakeBody[index + 1].x) {
+            imgUrl += "body_v.png"
+        } else if(snakeBody[index - 1].y === snakeBody[index].y && snakeBody[index].y === snakeBody[index + 1].y) {
+            imgUrl += "body_h.png"
+        } else {
+            if((snakeBody[index - 1].y === snakeBody[index].y && snakeBody[index - 1].x === (snakeBody[index].x - 1) && snakeBody[index].x === snakeBody[index + 1].x && snakeBody[index].y === (snakeBody[index + 1].y - 1)) || 
+                (snakeBody[index - 1].x === snakeBody[index].x && snakeBody[index].y === (snakeBody[index - 1].y - 1) && snakeBody[index].y === snakeBody[index + 1].y && snakeBody[index + 1].x === (snakeBody[index].x - 1))) {
+                imgUrl += "curve_dl.png"
+            } else if((snakeBody[index - 1].x === snakeBody[index].x && snakeBody[index - 1].y === (snakeBody[index].y + 1) && snakeBody[index].y === snakeBody[index + 1].y && snakeBody[index].x === (snakeBody[index + 1].x - 1)) ||
+                (snakeBody[index - 1].y === snakeBody[index].y && snakeBody[index].x === (snakeBody[index - 1].x - 1) && snakeBody[index].x === snakeBody[index + 1].x && snakeBody[index + 1].y === (snakeBody[index].y + 1))) {
+                imgUrl += "curve_dr.png"
+            } else if((snakeBody[index - 1].y === snakeBody[index].y && snakeBody[index - 1].x === (snakeBody[index].x - 1) && snakeBody[index].x === snakeBody[index + 1].x) || 
+                (snakeBody[index - 1].x === snakeBody[index].x && snakeBody[index].y === snakeBody[index + 1].y && snakeBody[index + 1].x === (snakeBody[index].x - 1))) {
+                imgUrl += "curve_ul.png"
+            }else {
+                imgUrl += "curve_ur.png"
+            }
+
+        }
+        
+        return imgUrl
     }
 }
 
