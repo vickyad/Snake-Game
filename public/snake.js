@@ -2,16 +2,29 @@ import { getInputDirection } from './input.js'
 const GRID_SIZE = 21
 
 export const SNAKE_SPEED = 4
-const snakeBody = [{ x: 11, y: 11 }]
+export const snakeBody = [{ x: 11, y: 11 }, {x: 11, y: 12}]
 let newSegments = 0
+let iniciou = false
 
 export function updateSnake() {
     addSegments()
     const inputDirection = getInputDirection()
 
+
     for (let i = snakeBody.length - 2; i >= 0; i--) {
         snakeBody[i + 1] = { ...snakeBody[i] }
     }
+
+    if(!iniciou) {
+        if(!(inputDirection.x === 0 && inputDirection.y === 0)) {
+            iniciou = true
+        } else {
+            if(snakeBody.length === 2){
+                snakeBody[1].y = 12
+            }
+        }
+    }
+
 
     snakeBody[0].x += inputDirection.x
     snakeBody[0].y += inputDirection.y
@@ -23,7 +36,6 @@ export function renderSnake(gameBoard) {
         const image = getCorrectImage(index)
 
         snakePiece.setAttribute("src", image)
-        snakePiece.setAttribute("width", "38.36")
 
         snakePiece.style.gridRowStart = segment.y
         snakePiece.style.gridColumnStart = segment.x
@@ -35,7 +47,7 @@ export function renderSnake(gameBoard) {
 
 function getCorrectImage(index){
     const inputDirection = getInputDirection()
-    let imgUrl = "./assets/"
+    let imgUrl = "./assets/snake_"
 
     if(index === 0) {
         switch(inputDirection.d){

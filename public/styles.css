@@ -5,11 +5,11 @@ body {
     justify-content: center;
     align-items: center;
     margin: 0;
-    background-image: url(./assets/grass_background.jpg);
+    background-image: url(./assets/outter_board_background.png);
 }
 
 #game-board {
-    background-image: url(./assets/dirt_background.png);
+    background-image: url(./assets/inner_board_background.png);
     background-size: contain;
     height: 100vmin;
     width: 100vmin;
