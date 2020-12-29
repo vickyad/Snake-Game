@@ -15,8 +15,8 @@ export function updateFood() {
 export function renderFood(gameBoard) {
     const foodElement = document.createElement('IMG')
 
-    foodElement.setAttribute("src", "./assets/apple.svg")
-    foodElement.setAttribute("width", "38.36")
+    foodElement.setAttribute("src", "./assets/food.svg")
+    //foodElement.setAttribute("width", "38.36")
 
     foodElement.style.gridRowStart = food.y
     foodElement.style.gridColumnStart = food.x

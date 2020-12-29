@@ -11,9 +11,17 @@ body {
 #game-board {
     background-image: url(./assets/dirt_background.png);
     background-size: contain;
-    height: 90vmin;
-    width: 90vmin;
+    height: 100vmin;
+    width: 100vmin;
     display: grid;
     grid-template-rows: repeat(21, 1fr);
     grid-template-columns: repeat(21, 1fr);
+}
+
+.food {
+    width: 100%;
+}
+
+.snake {
+    width: 100%;
 }
