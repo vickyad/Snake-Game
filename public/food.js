@@ -4,18 +4,20 @@ const EXPANSION_RATE = 1
 export const GRID_SIZE = 21
 
 let food = getRandomFoodPosition()
+export let score = 0
 
 export function updateFood() {
     if(foodAte(food)) {
         growSnake(EXPANSION_RATE)
         food = getRandomFoodPosition()
+        score += 1
     }
 }
 
 export function renderFood(gameBoard) {
     const foodElement = document.createElement('IMG')
 
-    foodElement.setAttribute("src", "./assets/food.svg")
+    foodElement.setAttribute("src", "./assets/food.png")
 
     foodElement.style.gridRowStart = food.y
     foodElement.style.gridColumnStart = food.x

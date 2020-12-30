@@ -1,13 +1,13 @@
 import { SNAKE_SPEED, renderSnake, outsideGrid, snakeOverItself, updateSnake, snakeBody } from './snake.js'
-import { updateFood, renderFood } from './food.js'
+import { updateFood, renderFood, score } from './food.js'
 
 const gameBoard = document.getElementById('game-board')
+const scoreBoard = document.getElementById('score-board')
 
 let lastRender = 0
 let gameOver = false
 
 window.requestAnimationFrame(main)
-console.log("start")
 
 function main(currentTime) {
     if(gameOver) {
@@ -34,12 +34,11 @@ function main(currentTime) {
 function update() {
     updateSnake()
     updateFood()
-    if(snakeBody.length >= 3){
-        checkDeath()
-    }
+    checkDeath()
 }
 
 function render() {
+    scoreBoard.innerHTML = `<p>${score}</p>`
     gameBoard.innerHTML = ''
     renderSnake(gameBoard)
     renderFood(gameBoard)
