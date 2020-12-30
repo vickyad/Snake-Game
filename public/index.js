@@ -3,17 +3,25 @@ import { updateFood, renderFood, score } from './food.js'
 
 const gameBoard = document.getElementById('game-board')
 const scoreBoard = document.getElementById('score-board')
+const restartDialog = document.getElementById('restart-dialog')
+const cancelButton = document.getElementById('cancel')
+const confirmButton = document.getElementById('confirm')
 
 let lastRender = 0
 let gameOver = false
 
+restartDialog.close()
 window.requestAnimationFrame(main)
 
 function main(currentTime) {
     if(gameOver) {
-        if(confirm('You lost. Press ok to restart.')) {
+        restartDialog.showModal()
+        confirmButton.addEventListener('click', () => {
             window.location = '/'
-        }
+        })
+        cancelButton.addEventListener('click', () => {
+            restartDialog.close()
+        })
         return
     } else {
         window.requestAnimationFrame(main)
