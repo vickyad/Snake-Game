@@ -46,7 +46,7 @@ export function renderSnake(gameBoard) {
 
 function getCorrectImage(index){
     const inputDirection = getInputDirection()
-    let imgUrl = "./assets/snake_"
+    let imgUrl = "./assets/"
 
     if(index === 0) {
         switch(inputDirection.d){
