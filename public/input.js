@@ -1,15 +1,24 @@
+/* --> Constants <-- */
 let inputDirection = {x: 0, y: 0, d:'N'}
 let lastInputDirection = {x: 0, y: 0, d:'N'}
 
+let xDown = null;                                                        
+let yDown = null;
+
+
+/* --> Event Listeners <-- */
 document.addEventListener('touchstart', handleTouchStart, false);        
 document.addEventListener('touchmove', handleTouchMove, false);
 
-var xDown = null;                                                        
-var yDown = null;
+
+/* --> Functions <-- */
+export function getInputDirection() {
+    lastInputDirection = inputDirection
+    return inputDirection
+}
 
 function getTouches(evt) {
-  return evt.touches ||             // browser API
-         evt.originalEvent.touches; // jQuery
+  return evt.touches
 }                                                     
 
 function handleTouchStart(evt) {
@@ -84,8 +93,3 @@ window.addEventListener('keydown', e => {
             break
     }
 })
-
-export function getInputDirection() {
-    lastInputDirection = inputDirection
-    return inputDirection
-}
