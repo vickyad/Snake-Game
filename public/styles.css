@@ -1,3 +1,15 @@
+@media only screen 
+and (min-device-width: 1224px) {
+    body{flex-direction: row-reverse;}
+    #score-board {margin-left: 10vmin;}
+}
+
+@media only screen
+and (max-device-width: 1223px) {
+    body{flex-direction: column;}
+    #score-board {margin-bottom: 10vmin;}
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
@@ -30,8 +42,6 @@ body {
 
 #score-board {
     position: relative;
-    margin-left: 10vmin;
-    margin-bottom: 80vmin;
     text-align: center;
     background-color: #694E73;
     border-radius: 50%;
