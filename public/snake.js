@@ -8,8 +8,8 @@ const GRID_SIZE = 21
 
 // Snake
 const snakeBody = [{ x: 11, y: 11 }, {x: 11, y: 12}]
-let started = false
 let grow = false
+let started = false
 
 
 /* --> Functions <-- */
@@ -60,6 +60,58 @@ export function renderSnake(gameBoard) {
         // Append the segment to the board
         gameBoard.appendChild(snakePiece)
     })
+}
+
+// foodAte(position): verify if the food was ate
+//  input: position -> { x , y } : the position of the current food
+//  output: boolean :
+//      true -> food was ate
+//      false -> food is still there
+export function foodAte(position) {
+    return snakeBody[0].x === position.x && snakeBody[0].y === position.y
+}
+
+// onSnake(position, ignoreHead): verify if some position is in the same position as some part of the snake body
+// input: position -> { x , y } : the position that will be tested
+//        ignoreHead -> tells if is necessary to ignore the head (this function is used to verify if the snake is over itself)
+// output: boolean :
+//      true -> the position overlaps the snake
+//      false -> the postion don't overlap the snake
+export function onSnake(position, ignoreHead = false) {
+    return snakeBody.some((segment, index) => {
+        if (ignoreHead && index === 0) {
+            return false
+        } else {
+            return segment.x === position.x && segment.y === position.y
+        }
+    })
+}
+
+// growSnake(): set the boolean grow to true
+export function growSnake() {
+    grow = true
+}
+
+// addSegments(): add a new segment on the snake array and sets the boolean grow to false
+export function addSegments() {
+    snakeBody.push({ ...snakeBody[snakeBody.length - 1] })
+    grow = false
+}
+
+// outsideGrid(): verify if the snake is outside of the board grid
+//  output: boolean :
+//      true -> the snake is outside the grid
+//      false -> the snake is inside the grid
+export function outsideGrid() {
+    return snakeBody[0].x < 1 || snakeBody[0].x > GRID_SIZE || snakeBody[0].y < 1 || snakeBody[0].y > GRID_SIZE
+}
+
+// snakeOverItself(): verify if the head colided with some part of the snake
+//  output: boolean :
+//      true -> the snake colided with itself
+//      false -> the snake don't colided
+export function snakeOverItself() {
+    return onSnake(snakeBody[0], true)
 }
 
 // getCorrectImage(index): get the correct asset based on the position of the current and adjacent segments
@@ -122,56 +174,4 @@ function getCorrectImage(index) {
     }
 
     return imgUrl
-}
-
-// foodAte(position): verify if the food was ate
-//  input: position -> { x , y } : the position of the current food
-//  output: boolean :
-//      true -> food was ate
-//      false -> food is still there
-export function foodAte(position) {
-    return snakeBody[0].x === position.x && snakeBody[0].y === position.y
-}
-
-// onSnake(position, ignoreHead): verify if some position is in the same position as some part of the snake body
-// input: position -> { x , y } : the position that will be tested
-//        ignoreHead -> tells if is necessary to ignore the head (this function is used to verify if the snake is over itself)
-// output: boolean :
-//      true -> the position overlaps the snake
-//      false -> the postion don't overlap the snake
-export function onSnake(position, ignoreHead = false) {
-    return snakeBody.some((segment, index) => {
-        if (ignoreHead && index === 0) {
-            return false
-        } else {
-            return segment.x === position.x && segment.y === position.y
-        }
-    })
-}
-
-// growSnake(): set the boolean grow to true
-export function growSnake() {
-    grow = true
-}
-
-// addSegments(): add a new segment on the snake array and sets the boolean grow to false
-export function addSegments() {
-    snakeBody.push({ ...snakeBody[snakeBody.length - 1] })
-    grow = false
-}
-
-// outsideGrid(): verify if the snake is outside of the board grid
-//  output: boolean :
-//      true -> the snake is outside the grid
-//      false -> the snake is inside the grid
-export function outsideGrid() {
-    return snakeBody[0].x < 1 || snakeBody[0].x > GRID_SIZE || snakeBody[0].y < 1 || snakeBody[0].y > GRID_SIZE
-}
-
-// snakeOverItself(): verify if the head colided with some part of the snake
-//  output: boolean :
-//      true -> the snake colided with itself
-//      false -> the snake don't colided
-export function snakeOverItself() {
-    return onSnake(snakeBody[0], true)
 }
