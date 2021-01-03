@@ -1,14 +1,13 @@
-import { foodAte, growSnake, onSnake } from './snake.js'
+import { foodAte, onSnake, growSnake } from './snake.js'
 
-const EXPANSION_RATE = 1
-export const GRID_SIZE = 21
+const GRID_SIZE = 21
 
 let food = getRandomFoodPosition()
 export let score = 0
 
 export function updateFood() {
     if(foodAte(food)) {
-        growSnake(EXPANSION_RATE)
+        growSnake()
         food = getRandomFoodPosition()
         score += 1
     }

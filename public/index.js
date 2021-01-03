@@ -1,4 +1,4 @@
-import { SNAKE_SPEED, renderSnake, outsideGrid, snakeOverItself, updateSnake, snakeBody } from './snake.js'
+import { renderSnake, outsideGrid, snakeOverItself, updateSnake } from './snake.js'
 import { updateFood, renderFood, score } from './food.js'
 
 const gameBoard = document.getElementById('game-board')
@@ -6,6 +6,8 @@ const scoreBoard = document.getElementById('score-board')
 const restartDialog = document.getElementById('restart-dialog')
 const cancelButton = document.getElementById('cancel')
 const confirmButton = document.getElementById('confirm')
+
+const SNAKE_SPEED = 4
 
 let lastRender = 0
 let gameOver = false

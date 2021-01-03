@@ -1,25 +1,76 @@
 @media only screen 
 and (min-device-width: 1224px) {
-    body{flex-direction: row-reverse;}
-    #score-board {margin-left: 10vmin;}
+    body{
+        flex-direction: row-reverse;
+    }
+
+    #score-board {
+        margin-left: 10vmin;
+    }
 }
 
 @media only screen
 and (max-device-width: 1223px) {
-    body{flex-direction: column;}
-    #score-board {margin-bottom: 10vmin;}
+    body{
+        flex-direction: column;
+    }
+
+    #score-board {
+        margin-bottom: 10vmin;
+    }
 }
 
 body {
     font-family: 'Poppins', sans-serif;
-    font-size: 16px;
+    font-size: 1rem;
+    background-image: url(./assets/outter_board_background.png);
     height: 100vh;
     width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0;
-    background-image: url(./assets/outter_board_background.png);
+    margin: 0; 
+}
+
+dialog {
+    background-color: #694E73;
+    width: 80vw;
+    border-radius: 0.9rem;
+    border: none;
+    padding: 2rem;
+}
+
+button {
+    background-color: #f5f5f5;
+    color: #694E73;
+    float: right;
+    border-radius: 0.6rem;
+    border: none;
+    margin-left: 1rem;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+}
+
+button:hover {
+    color: whitesmoke;
+}
+
+button:focus {
+    outline: none;
+}
+
+p {
+    font-size: 1.4rem;
+    color: #f5f5f5;
+}
+
+.food {
+    width: 100%;
+}
+
+.snake {
+    width: 100%;
 }
 
 #game-board {
@@ -32,60 +83,23 @@ body {
     grid-template-columns: repeat(21, 1fr);
 }
 
-.food {
-    width: 100%;
-}
-
-.snake {
-    width: 100%;
-}
-
 #score-board {
-    position: relative;
-    text-align: center;
     background-color: #694E73;
-    border-radius: 50%;
-    padding: inherit;
     width: 5rem;
     height: 5rem;
-}
-
-p {
-    font-size: 1.5rem;
-    color: #f5f5f5;
-}
-
-dialog {
-    background-color: #694E73;
-    border-radius: 0.9rem;
-    border: none;
-    padding: 2rem;
-}
-
-button {
-    background-color: #f5f5f5;
-    border: none;
-    padding: 15px 32px;
+    border-radius: 50%;
     text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
-    color: #694E73;
-    border-radius: 0.6rem;
-    float: right;
-    margin-left: 1rem;
 }
 
-button:focus {
-    outline: none;
+#score-board p {
+    font-weight: bold;
 }
 
 #confirm:hover {
-    color: whitesmoke;
     background-color: #6AB155;
+    
 }
 
 #cancel:hover {
-    color: whitesmoke;
-    background-color: #FF4D4D;
+    background-color: #FF4D4D; 
 }
