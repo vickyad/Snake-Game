@@ -1,7 +1,11 @@
 @media only screen 
 and (min-device-width: 1224px) {
-    body{
+    body {
         flex-direction: row-reverse;
+    }
+
+    dialog {
+        width: 500px;
     }
 
     #score-board {
@@ -13,6 +17,10 @@ and (min-device-width: 1224px) {
 and (max-device-width: 1223px) {
     body{
         flex-direction: column;
+    }
+
+    dialog {
+        width: 80vw;
     }
 
     #score-board {
@@ -34,10 +42,10 @@ body {
 
 dialog {
     background-color: #694E73;
-    width: 80vw;
     border-radius: 0.9rem;
     border: none;
     padding: 2rem;
+    top: 30%;
 }
 
 button {
